@@ -16,6 +16,8 @@
 
 package com.example.configurationclient;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -34,14 +36,16 @@ public class ConfigurationClientApplication {
 @RefreshScope
 @RestController
 class MessageRestController {
+	private static final Logger logger = LoggerFactory.getLogger(MessageRestController.class);
 
-	@Value("${message:Hello default}")
+	@Value("${client.config:default config}")
 	private String message;
 
 	
 
 	@RequestMapping("/message")
 	String getMessage() {
+		logger.info("@#@#@#@#@#@#@#@#@#@#@#@#@##@#@#@#@#@#@#@#@#@##@@#@##@");
 		return this.message;
 	}
 }
